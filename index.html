@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeetasi Store - Hosting & VPS</title>
+    <meta name="description"
+        content="Dapatkan hosting dan VPS super cepat, handal, dan terjangkau di Zeetasi Store. Dukungan 24/7, garansi uptime 99.9%, dan teknologi terbaru untuk website dan aplikasi Anda. Daftar sekarang!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Tambahkan Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Reset CSS */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* CSS Variables for Theme */
+        :root {
+            --bg-color: #f9f9f9;
+            --text-color: #333333;
+            --primary-color: #673AB7;
+            --primary-darker: #512DA8;
+            --secondary-color: #795548;
+            --border-color: #dddddd;
+            --accent-color: #4CAF50;
+            --accent-darker: #388E3C;
+            --highlight-color: #FFEB3B;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --card-bg: #fff;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #212121;
+            --text-color: #EEEEEE;
+            --primary-color: #9575CD;
+            --primary-darker: #7E57C2;
+            --secondary-color: #A1887F;
+            --border-color: #616161;
+            --accent-color: #81C784;
+            --accent-darker: #66BB6A;
+            --highlight-color: #F0F4C3;
+            --shadow-color: rgba(255, 255, 255, 0.1);
+            --card-bg: #333;
+        }
+
+        /* General Body Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+            background: linear-gradient(to bottom right, var(--bg-color), #e0e0e0);
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated Rainbow Text Styles */
+        .rainbow-text {
+            font-size: 2em;
+            animation: rainbow-animation 5s linear infinite,
+                move-animation 10s linear infinite alternate;
+            position: relative;
+            display: inline-block;
+        }
+
+        @keyframes rainbow-animation {
+            0% {
+                color: #ff0000;
+            }
+
+            16% {
+                color: #ffa500;
+            }
+
+            33% {
+                color: #ffff00;
+            }
+
+            50% {
+                color: #008000;
+            }
+
+            66% {
+                color: #0000ff;
+            }
+
+            83% {
+                color: #4b0082;
+            }
+
+            100% {
+                color: #ee82ee;
+            }
+        }
+
+        @keyframes move-animation {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(50%);
+            }
+        }
+
+        header p {
+            color: #fff;
+        }
+
+        /* Container Styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Theme Switcher Styles */
+        .theme-switcher {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        .theme-switcher button {
+            background-color: var(--secondary-color);
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+
+        .theme-switcher button:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Menu Styles */
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            animation: slideFromTop 0.5s ease-out;
+        }
+
+        .menu button {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+
+        .menu button:hover {
+            background-color: var(--primary-darker);
+        }
+
+        /* Content Styles */
+        .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Section Styles */
+        .info-section,
+        .product-section,
+        .contact-section,
+        .register-section,
+        .login-section,
+        .reset-password-section,
+        .payment-section {
+            margin-bottom: 30px;
+        }
+
+        /* Section Heading Styles */
+        .info-section h2,
+        .product-section h2,
+        .contact-section h2,
+        .register-section h2,
+        .login-section h2,
+        .reset-password-section h2,
+        .payment-section h2 {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* Info Section List Styles */
+        .info-section ul {
+            list-style: disc;
+            margin-left: 20px;
+        }
+
+        /* Product Grid Styles */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        /* Product Card Styles */
+        .product {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            box-shadow: 0 2px 4px var(--shadow-color);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px var(--shadow-color);
+        }
+
+        .product h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .product p {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .product .price {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        /* Tombol Pesan Sekarang (Button dengan Animasi Laser) */
+        .product .pesan-button {
+            display: inline-block;
+            position: relative;
+            background-color: var(--accent-color);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+            overflow: hidden;
+        }
+
+        .product .pesan-button:hover {
+            background-color: var(--accent-darker);
+            transform: scale(1.05);
+        }
+
+        .product .pesan-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to right,
+                    transparent,
+                    var(--primary-color),
+                    transparent);
+            animation: laser-rotate 4s linear infinite;
+            z-index: 1;
+        }
+
+        .product .pesan-button span {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Keyframes untuk animasi laser */
+        @keyframes laser-rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Form Styles */
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .auth-form label {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .auth-form input[type="text"],
+        .auth-form input[type="email"],
+        .auth-form input[type="password"] {
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .auth-form button {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+
+        .auth-form button:hover {
+            background-color: var(--primary-darker);
+        }
+
+        /* Contact Section Styles */
+        .contact-section a {
+            display: inline-block;
+            background-color: #25d366;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        /* Reset Password Styles */
+        .reset-password-section a {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Hamburger Menu Style */
+        #hamburger-menu {
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+            color: var(--primary-color);
+        }
+
+        /* Hidden Menu Styles */
+        #hidden-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 5px var(--shadow-color);
+            z-index: 10;
+        }
+
+        #hidden-menu button {
+            display: block;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+            margin-bottom: 5px;
+            text-align: left;
+            width: 100%;
+        }
+
+        #hidden-menu button:hover {
+            background-color: var(--primary-darker);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideFromTop {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .menu {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .menu button {
+                width: 100%;
+            }
+
+            .products {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Payment Section Styles */
+        .payment-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .payment-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: var(--card-bg);
+        }
+
+        .payment-list li i {
+            margin-right: 10px;
+            font-size: 24px;
+            /* Ukuran ikon */
+            color: var(--accent-color);
+        }
+
+        .payment-list li span {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="rainbow-text">⚡Zeetasi Store⚡</h1>
+        <p>⚡Hosting & VPS Dan Kebutuhan Lainnya⚡</p>
+    </header>
+    <div class="container">
+        <div class="theme-switcher">
+            <button onclick="toggleTheme()">Tema</button>
+        </div>
+
+        <div id="authMenu" class="menu">
+            <button onclick="showContent('register')">Daftar</button>
+            <button onclick="showContent('login')">Login</button>
+        </div>
+
+        <div id="mainMenu" class="menu" style="display: none;">
+            <button onclick="showContent('info')">Informasi</button>
+            <button onclick="showContent('products')">Products</button>
+            <button onclick="showContent('contact')">Kontak</button>
+            <button onclick="showContent('payment')">Pembayaran</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+
+        <!-- Hamburger Menu (Hidden by Default) -->
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div id="hamburger-menu" style="display: none;">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+
+        <!-- Hidden Menu -->
+        <div id="hidden-menu" style="display: none;">
+            <button onclick="showContent('info'); toggleHiddenMenu()">Informasi</button>
+            <button onclick="showContent('products'); toggleHiddenMenu()">Layanan</button>
+            <button onclick="showContent('contact'); toggleHiddenMenu()">Kontak</button>
+            <button onclick="showContent('payment'); toggleHiddenMenu()">Pembayaran</button>
+            <button onclick="logout(); toggleHiddenMenu()">Logout</button>
+        </div>
+
+        <div id="register" class="content">
+            <div class="register-section">
+                <h2>Buat Akun Baru</h2>
+                <form id="registerForm" class="auth-form">
+                    <label for="nama">Nama Lengkap:</label>
+                    <input type="text" id="nama" name="nama" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <button type="submit">Daftar Sekarang</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="login" class="content">
+            <div class="login-section">
+                <h2>Login ke Akun Anda</h2>
+                <form id="loginForm" class="auth-form">
+                    <label for="emailLogin">Email:</label>
+                    <input type="email" id="emailLogin" name="emailLogin" required>
+
+                    <label for="passwordLogin">Password:</label>
+                    <input type="password" id="passwordLogin" name="passwordLogin" required>
+
+                    <button type="submit">Login</button>
+                    <div class="reset-password-section">
+                        <a href="#" onclick="showContent('resetPassword')">Lupa password?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="resetPassword" class="content">
+            <div class="reset-password-section">
+                <h2>Reset Password</h2>
+                <form id="resetPasswordForm" class="auth-form">
+                    <label for="emailReset">Email:</label>
+                    <input type="email" id="emailReset" name="emailReset" required>
+                    <button type="submit">Kirim Link Reset</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="info" class="content">
+            <div class="info-section">
+                <h2>Kenapa Memilih Zeetasi Store?</h2>
+                <p>Kami menyediakan layanan hosting dan VPS terbaik dengan keunggulan:</p>
+                <ul>
+                    <li><b>Kecepatan Tinggi:</b> Server SSD NVMe untuk performa maksimal.</li>
+                    <li><b>Dukungan 24/7:</b> Tim ahli siap membantu kapan saja.</li>
+                    <li><b>Harga Terjangkau:</b> Kualitas terbaik dengan harga yang bersaing.</li>
+                    <li><b>Garansi Uptime 99.9%:</b> Website Anda selalu online.</li>
+                    <li><b>Backup Harian Otomatis:</b> Data Anda aman dan terlindungi.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="products" class="content">
+            <div class="product-section">
+                <h2>Pilihan Paket Hosting Kami</h2>
+                <div class="products">
+                    <div class="product">
+                        <h3>Hosting Ram 1 Dan Core 1</h3>
+                        <p class="price">Rp 100.000/bulan</p>
+                        <p>Cocok untuk website sederhana dan blog pribadi.</p>
+                        <a href="https://wa.me/6285762554515?text=Saya%20tertarik%20untuk%20memesan%20Hosting%201%20Core"
+                            target="_blank" class="pesan-button"><span>Pesan Sekarang</span></a>
+                    </div>
+                    <div class="product">
+                        <h3>Hosting Ram 8 dan Core 4</h3>
+                        <p class="price">Rp 200.000/bulan</p>
+                        <p>Ideal untuk bisnis kecil dengan trafik sedang.</p>
+                        <a href="https://wa.me/6285762554515?text=Saya%20tertarik%20untuk%20memesan%20Hosting%202%20Core"
+                            target="_blank" class="pesan-button"><span>Pesan Sekarang</span></a>
+                    </div>
+                    <div class="product">
+                        <h3>Hosting Ram 16 dan Core 8</h3>
+                        <p class="price">Rp 400.000/bulan</p>
+                        <p>Performa tinggi untuk website dengan trafik tinggi dan aplikasi kompleks.</p>
+                        <a href="https://wa.me/6285762554515?text=Saya%20tertarik%20untuk%20memesan%20Hosting%204%20Core"
+                            target="_blank" class="pesan-button"><span>Pesan Sekarang</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-section">
+                <h2>Pilihan Paket VPS Kami</h2>
+                <div class="products">
+                    <div class="product">
+                        <h3>VPS 1GB RAM Core 1 Intel/Amd</h3>
+                        <p class="price">Rp 15.000/bulan</p>
+                        <p>Solusi hemat biaya untuk pengembangan dan testing.</p>
+                        <a href="https://wa.me/6285762554515?text=Saya%20tertarik%20untuk%20memesan%20VPS%201GB%20RAM"
+                            target="_blank" class="pesan-button"><span>Pesan Sekarang</span></a>
+                    </div>
+                    <div class="product">
+                        <h3>VPS 4GB RAM Core 2 Intel/Amd</h3>
+                        <p class="price">Rp 35.000/bulan</p>
+                        <p>Ideal untuk hosting banyak website dan aplikasi menengah.</p>
+                        <a href="https://wa.me/6285762554515?text=Saya%20tertarik%20untuk%20memesan%20VPS%204GB%20RAM"
+                            target="_blank" class="pesan-button"><span>Pesan Sekarang</span></a>
+                    </div>
+                    <div class="product">
+                        <h3>VPS 16GB RAM Core 4-8 Intel/Amd</h3>
+                        <p class="price">Rp 65.000/bulan</p>
+                        <p>Performa maksimal untuk aplikasi berat, database besar, dan server game.</p>
+                        <a href="https://wa.me/6285762554515?text=Saya%20tertarik%20untuk%20memesan%20VPS%2016GB%20RAM"
+                            target="_blank" class="pesan-button"><span>Pesan Sekarang</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-section">
+                <h2>Pilihan Domain Kami</h2>
+                <div class="products">
+                    <div class="product">
+                        <h3>Domain .my.id</h3>
+                        <p class="price">Rp 12.000/tahun</p>
+                        <p>Domain murah untuk identitas online Anda.</p>
+                        <a href="https://wa.me/6285762554515?text=Saya%20tertarik%20untuk%20memesan%20domain%20.my.id"
+                            target="_blank" class="pesan-button"><span>Pesan Sekarang</span></a>
+                    </div>
+                    <div class="product">
+                        <h3>Domain .web.id</h3>
+                        <p class="price">Rp 14.000/tahun</p>
+                        <p>Cocok untuk website pribadi atau organisasi.</p>
+                        <a href="https://wa.me/6285762554515?text=Saya%20tertarik%20untuk%20memesan%20domain%20.web.id"
+                            target="_blank" class="pesan-button"><span>Pesan Sekarang</span></a>
+                    </div>
+                    <div class="product">
+                        <h3>Domain .xyz</h3>
+                        <p class="price">Rp 15.000/tahun</p>
+                        <p>Pilihan populer untuk website modern dan inovatif.</p>
+                        <a href="https://wa.me/6285762554515?text=Saya%20tertarik%20untuk%20memesan%20domain%20.xyz"
+                            target="_blank" class="pesan-button"><span>Pesan Sekarang</span></a>
+                    </div>
+                    <div class="product">
+                        <h3>Domain .com</h3>
+                        <p class="price">Rp 145.000/tahun</p>
+                        <p>Domain paling populer dan terpercaya di dunia.</p>
+                        <a href="https://wa.me/6285762554515?text=Saya%20tertarik%20untuk%20memesan%20domain%20.com"
+                            target="_blank" class="pesan-button"><span>Pesan Sekarang</span></a>
+                    </div>
+                    <div class="product">
+                        <h3>Domain .online</h3>
+                        <p class="price">Rp 90.000/tahun</p>
+                        <p>Nama domain yang sempurna untuk bisnis yang fokus ke penjualan online.</p>
+                        <a href="https://wa.me/6285762554515?text=Saya%20tertarik%20untuk%20memesan%20domain%20.online"
+                            target="_blank" class="pesan-button"><span>Pesan Sekarang</span></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Nokos Section -->
+            <div class="product-section">
+                <h2>Pilihan Nokos/Nomor Kosong</h2>
+                <div class="products">
+                    <div class="product">
+                        <h3>Nokos Polandia (+48)</h3>
+                        <p class="price">Rp 5.000/nomor</p>
+                        <p>Nomor Polandia untuk verifikasi dan keperluan lainnya.</p>
+                        <a href="https://wa.me/6285762554515?text=Saya%20tertarik%20untuk%20memesan%20Nokos%20Polandia"
+                            target="_blank" class="pesan-button"><span>Pesan Sekarang</span></a>
+                    </div>
+                    <div class="product">
+                        <h3>Nokos Indonesia (+62)</h3>
+                        <p class="price">Rp 6.000/nomor</p>
+                        <p>Nomor Indonesia untuk verifikasi dan keperluan lainnya.</p>
+                        <a href="https://wa.me/6285762554515?text=Saya%20tertarik%20untuk%20memesan%20Nokos%20Indonesia"
+                            target="_blank" class="pesan-button"><span>Pesan Sekarang</span></a>
+                    </div>
+                    <div class="product">
+                        <h3>Nokos Kanada (+1)</h3>
+                        <p class="price">Rp 12.000/nomor</p>
+                        <p>Nomor Kanada untuk verifikasi dan keperluan lainnya.</p>
+                        <a href="https://wa.me/6285762554515?text=Saya%20tertarik%20untuk%20memesan%20Nokos%20Kanada"
+                            target="_blank" class="pesan-button"><span>Pesan Sekarang</span></a>
+                    </div>
+                    <div class="product">
+                        <h3>Nokos Amerika (+1)</h3>
+                        <p class="price">Rp 12.000/nomor</p>
+                        <p>Nomor Amerika untuk verifikasi dan keperluan lainnya.</p>
+                        <a href="https://wa.me/6285762554515?text=Saya%20tertarik%20untuk%20memesan%20Nokos%20Amerika"
+                            target="_blank" class="pesan-button"><span>Pesan Sekarang</span></a>
+                    </div>
+                    <div class="product">
+                        <h3>Nokos Malaysia (+60)</h3>
+                        <p class="price">Rp 10.000/nomor</p>
+                        <p>Nomor Malaysia untuk verifikasi dan keperluan lainnya.</p>
+                        <a href="https://wa.me/6285762554515?text=Saya%20tertarik%20untuk%20memesan%20Nokos%20Malaysia"
+                            target="_blank" class="pesan-button"><span>Pesan Sekarang</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact" class="content">
+            <div class="contact-section">
+                <h2>Hubungi Kami</h2>
+                <p>Untuk melakukan transaksi atau pertanyaan lebih lanjut, silakan hubungi owner kami melalui WhatsApp:</p>
+                <a href="https://wa.me/6285762554515" target="_blank">Hubungi via WhatsApp</a>
+            </div>
+        </div>
+
+        <!-- Payment Section -->
+        <div id="payment" class="content">
+            <div class="payment-section">
+                <h2>Metode Pembayaran</h2>
+                <p>Kami menerima pembayaran melalui e-wallet berikut:</p>
+                <ul class="payment-list">
+                    <li><i class="fas fa-wallet"></i> <span>DANA:</span> 085762554515</li>
+                    <li><i class="fas fa-mobile-alt"></i> <span>OVO:</span> 085762554515</li>
+                    <li><i class="fas fa-qrcode"></i> <span>GoPay:</span> 085762554515</li>
+                    <li><i class="fas fa-shopping-cart"></i> <span>ShopeePay:</span> 085762554515</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Script
+        let isLoggedIn = false;
+
+        function toggleTheme() {
+            const body = document.body;
+            body.setAttribute('data-theme', body.getAttribute('data-theme') === 'dark' ? null : 'dark');
+        }
+
+        function showContent(id) {
+            if (!isLoggedIn && id !== 'register' && id !== 'login' && id !== 'resetPassword') {
+                alert("Anda harus login atau register terlebih dahulu.");
+                showContent('login');
+                return;
+            }
+
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+
+        function logout() {
+            isLoggedIn = false;
+            document.getElementById('mainMenu').style.display = 'none';
+            document.getElementById('authMenu').style.display = 'flex';
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userPassword');
+            showContent('login');
+        }
+
+        function toggleHiddenMenu() {
+            const hiddenMenu = document.getElementById('hidden-menu');
+            hiddenMenu.style.display = hiddenMenu.style.display === 'none' ? 'block' : 'none';
+        }
+
+        document.getElementById('hamburger-menu').addEventListener('click', toggleHiddenMenu);
+
+        document.getElementById('registerForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const nama = document.getElementById('nama').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('userPassword', password);
+            localStorage.setItem('userName', nama);
+
+            alert('Registrasi berhasil! Silakan login.');
+            showContent('login');
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const emailLogin = document.getElementById('emailLogin').value;
+            const passwordLogin = document.getElementById('passwordLogin').value;
+
+            const storedEmail = localStorage.getItem('userEmail');
+            const storedPassword = localStorage.getItem('userPassword');
+
+            if (emailLogin === storedEmail && passwordLogin === storedPassword) {
+                isLoggedIn = true;
+                document.getElementById('authMenu').style.display = 'none';
+                document.getElementById('mainMenu').style.display = 'flex';
+                // Menampilkan ikon hamburger menu
+                document.getElementById('hamburger-menu').style.display = 'block';
+                alert('Login berhasil!');
+                showContent('info');
+            } else {
+                alert('Login gagal. Email atau password salah.');
+            }
+     });
+
+        document.getElementById('resetPasswordForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const emailReset = document.getElementById('emailReset').value;
+            const storedEmail = localStorage.getItem('userEmail');
+
+            if (emailReset === storedEmail) {
+                // Ini hanyalah simulasi!
+                alert('Link reset password telah dikirim ke email Anda.');
+            } else {
+                alert('Email tidak terdaftar.');
+            }
+        });
+
+        showContent('login');
+
+        if (localStorage.getItem('userEmail')) {
+            document.getElementById('authMenu').style.display = 'none';
+            document.getElementById('mainMenu').style.display = 'none';
+            // Menampilkan ikon hamburger menu
+            document.getElementById('hamburger-menu').style.display = 'block';
+            isLoggedIn = true;
+            showContent('info');
+        }
+    </script>
+</body>
+
+</html>
